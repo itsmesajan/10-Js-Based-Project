@@ -34,6 +34,7 @@ function addTodo(todo){
     todoEl.addEventListener('click', () =>{
       todoEl.classList.toggle('completed');
 
+      sortTodos();
       updateLS();
     });
 
@@ -49,6 +50,7 @@ function addTodo(todo){
   
     input.value="";
 
+    sortTodos();
     updateLS();
   }
 }
@@ -66,4 +68,18 @@ function updateLS(){
   });
 
   localStorage.setItem('todos',JSON.stringify(todos));
+}
+
+function sortTodos(){
+  const todosArray = Array.from(todosUL.children);
+
+  todosArray.sort((a,b)=>{
+    const aCompleted = a.classList.contains('completed');
+    const bCompleted = b.classList.contains('completed');
+
+    return aCompleted-bCompleted;
+  });
+
+  todosUL.innerHTML = '';
+  todosArray.forEach((todo) => todosUL.appendChild(todo));
 }
