@@ -12,6 +12,10 @@ body {
   /* Required for positioning pseudo-elements */
   overflow: hidden;
 }
+a{
+  text-decoration: none;
+  color: white;
+}
 
 body::before {
   content: "";
