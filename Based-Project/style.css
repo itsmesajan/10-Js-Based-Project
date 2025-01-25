@@ -17,6 +17,26 @@ body {
     min-height: 100vh;
 }
 
-img{
-    max-width: 100%;
+.container {
+    text-align: center;
+}
+
+.home-btn {
+    background-color: rgb(201, 11, 49);
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.home-btn:hover {
+    background-color: rgb(235, 21, 64);
+}
+
+.home-btn:active {
+    transform: scale(0.95);
 }
