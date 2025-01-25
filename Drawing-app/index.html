@@ -3,18 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notes App</title>
-    <link rel="shortcut icon" href="/img/note.png" type="image/x-icon" />
+    <title>Drawing App</title>
+    <link rel="shortcut icon" href="/img/Draw.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
-
     <script src="script.js" defer></script>
   </head>
   <body>
-    <button id="add" class="add"><i class="fas fa-plus"></i> Add Note</button>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <div class="toolbox">
+      <button id="decrease">-</button>
+      <span id="size">30</span>
+      <button id="increase">+</button>
+      <input id="color" type="color" />
+      <button id="clear">🧹</button>
+    </div>
   </body>
 </html>
