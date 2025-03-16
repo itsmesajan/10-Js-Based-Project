@@ -66,7 +66,6 @@ body {
     height: 400px;
     font-family: inherit;
     font-size: 1.2rem;
-    margin-left: 10px;
 }
 .note .hidden{
     display: none;

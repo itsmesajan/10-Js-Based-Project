@@ -1,7 +1,7 @@
 const APIURL = "https://api.github.com/users/";
 
 
-getUser("Yellowflash132");
+getUser("itsmesajan");
 
 const main = document.getElementById('main');
 const form = document.getElementById('form');

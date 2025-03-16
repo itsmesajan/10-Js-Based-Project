@@ -51,8 +51,9 @@ function drawLine(x1,y1,x2,y2){
   ctx.beginPath;
   ctx.moveTo(x1,y1);
   ctx.lineTo(x2,y2);
-  ctx.fillStyle = "color";
-  ctx.fill();  
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size;
+  ctx.stroke();  
 }
 
 increaseBtn.addEventListener("click", ()=>{
