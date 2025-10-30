@@ -38,14 +38,39 @@ body {
 .note .tools{
     background-color:#1147a3;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding: 0.5rem;
+}
+
+.note .tools .title {
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    width: 50%;
+}
+
+.note .tools .buttons {
+    display: flex;
+    gap: 0.5rem;
 }
 
 .note .tools button{
     background: transparent;
     border: none;
     color: white;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+.note .title{
+    background: transparent;
+    border: none;
+    color: white;
+    align-items:left;
     font-size: 1rem;
     margin-left: 0.5rem;
     cursor: pointer;
@@ -57,6 +82,7 @@ body {
     overflow: hidden;
     height: 400px;
     width: 100%;
+    padding-left:10px;
 }
 
 .note textarea{

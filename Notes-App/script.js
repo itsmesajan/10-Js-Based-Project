@@ -4,7 +4,11 @@ const notes = JSON.parse(localStorage.getItem('notes'));
 
 if(notes){
   notes.forEach((note) => {
-    addNewNote(note);
+    addNewNote(note.content);
+    const lastNote = document.querySelector('.notes:last-child');
+    if(lastNote){
+      lastNote.querySelector('.title').value = note.title;
+    }
   });
 }
 
@@ -19,14 +23,18 @@ function addNewNote(text = ''){
   note.innerHTML = `
     <div class="notes">
       <div class="tools">
-          <button class="edit"><i class="fas fa-edit"></i></button>
-          <button class="delete"><i class="fas fa-trash-alt"></i></button>
+        <input type="text" class="title" value="Note App"></input>
+        <button class="bold" title="Bold"><i class="fas fa-bold"></i></button>
+          <button class="edit" title="Edit"><i class="fas fa-edit"></i></button>
+          <button class="delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
       </div>
       <div class="main ${text ? "" : "hidden"}""></div>
       <textarea class="${text ? "hidden" : ""}"></textarea>
     </div>
   `;
 
+  const titleInput = note.querySelector('.title');
+  const boldBtn = note.querySelector('.bold');
   const editBtn = note.querySelector('.edit');
   const deleteBtn = note.querySelector('.delete');
 
@@ -35,12 +43,35 @@ function addNewNote(text = ''){
 
   textArea.value= text;
   main.innerHTML = marked(text);
+
+
+
+  titleInput.addEventListener('change',()=>{
+    updateLS
+  })
   
   editBtn.addEventListener('click', () =>{
     main.classList.toggle('hidden');
     textArea.classList.toggle('hidden');
   });
-  
+
+    boldBtn.addEventListener('click',()=>{
+    const selection = window.getSelection();
+    const selectedText = selection.toString();
+
+    if(selectedText && !main.classList.contains('hidden')){
+      const range = selection.getRangeAt(0);
+      const boldText = document.createElement('strong');
+      boldText.textContent = selectedText;
+      range.deleteContents();
+      range.insertNode(boldText);
+      updateLS;
+    }else if (!main.classList.contains('hidden')) {
+      alert('Please select some text to make bold');
+    } else {
+      alert('Please switch to view mode to make text bold');
+    }
+  })
   deleteBtn.addEventListener('click', ()=>{
     note.remove();
 
@@ -60,12 +91,14 @@ function addNewNote(text = ''){
 }
 
 function updateLS(){
-  const notesText = document.querySelectorAll('textarea');
+  const noteElements = document.querySelectorAll('.notes');
 
   const notes = [];
 
-  notesText.forEach((note)=>{
-    notes.push(note.value);
+  noteElements.forEach((noteElement)=>{
+    const title = noteElement.querySelector('title').value;
+    const content = noteElement.querySelector('textarea').value;
+    notes.push({title,content});
   });
 
   localStorage.setItem('notes', JSON.stringify(notes));
