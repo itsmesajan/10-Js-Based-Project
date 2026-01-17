@@ -28,7 +28,7 @@ function addNewNote(text = ''){
           <button class="edit" title="Edit"><i class="fas fa-edit"></i></button>
           <button class="delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
       </div>
-      <div class="main ${text ? "" : "hidden"}""></div>
+      <div class="main ${text ? "" : "hidden"}"></div>
       <textarea class="${text ? "hidden" : ""}"></textarea>
     </div>
   `;
@@ -47,7 +47,7 @@ function addNewNote(text = ''){
 
 
   titleInput.addEventListener('change',()=>{
-    updateLS
+    updateLS();
   })
   
   editBtn.addEventListener('click', () =>{
@@ -65,7 +65,7 @@ function addNewNote(text = ''){
       boldText.textContent = selectedText;
       range.deleteContents();
       range.insertNode(boldText);
-      updateLS;
+      updateLS();
     }else if (!main.classList.contains('hidden')) {
       alert('Please select some text to make bold');
     } else {
@@ -96,7 +96,7 @@ function updateLS(){
   const notes = [];
 
   noteElements.forEach((noteElement)=>{
-    const title = noteElement.querySelector('title').value;
+    const title = noteElement.querySelector('.title').value;
     const content = noteElement.querySelector('textarea').value;
     notes.push({title,content});
   });
