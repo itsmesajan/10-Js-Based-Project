@@ -15,6 +15,45 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <button id="add" class="add"><i class="fas fa-plus"></i> Add Note</button>
+    <header class="app-header">
+      <div class="brand">
+        <i class="fas fa-note-sticky"></i>
+        <h1>Notes</h1>
+        <span id="count" class="count">0</span>
+      </div>
+
+      <label class="search">
+        <i class="fas fa-magnifying-glass"></i>
+        <input id="search" type="search" placeholder="Search notes" aria-label="Search notes" />
+        <kbd>/</kbd>
+      </label>
+
+      <button id="add" class="add" title="New note (N)">
+        <i class="fas fa-plus"></i><span>New note</span>
+      </button>
+    </header>
+
+    <main>
+      <section id="notes" class="notes-grid" aria-live="polite"></section>
+
+      <div id="empty" class="empty-state hidden">
+        <i class="fas fa-feather-pointed"></i>
+        <h2>No notes yet</h2>
+        <p>Capture your first idea. Notes support <strong>Markdown</strong> and save automatically.</p>
+        <button class="add" data-add><i class="fas fa-plus"></i><span>Create a note</span></button>
+        <p class="hint">Tip: press <kbd>N</kbd> anywhere to start a new note</p>
+      </div>
+
+      <div id="no-results" class="empty-state hidden">
+        <i class="fas fa-magnifying-glass"></i>
+        <h2>No matching notes</h2>
+        <p>Try a different search term.</p>
+      </div>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">
+      <span class="toast-msg">Note deleted</span>
+      <button class="toast-undo">Undo</button>
+    </div>
   </body>
 </html>
